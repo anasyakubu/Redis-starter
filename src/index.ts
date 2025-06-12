@@ -4,17 +4,17 @@ import dotenv from "dotenv";
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from "cookie-parser";
-// import errorHandler from "./middleware/errorHandler";
+import errorHandler from "./middleware/errorHandler";
 import cors from "cors";
 import bodyParser from 'body-parser';
-import connection from "./config/db.config";
+//import connection from "./config/db.config";
 import routes from "./routes/index";
 
 dotenv.config(); // to access all .env files
 const app = express();
 
 //*********** database connection ***********//
-const connect = connection;
+//const connect = connection;
 
 //console.log("Database", connect); // logout the connection
 
@@ -43,7 +43,7 @@ const corsOptions = {
 app.use(cors({ ...corsOptions, credentials: true }));
 
 
-//app.use(errorHandler); // for handling error
+app.use(errorHandler); // for handling error
 
 //*********** define routes ***********//
 app.use("/", routes);
